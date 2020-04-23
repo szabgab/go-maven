@@ -35,8 +35,8 @@ func parseFile(path string) (pageType, error) {
 			continue
 		}
 		if header && strings.HasPrefix(line, "=") {
-			parts := strings.SplitN(line, " ", 2)
-			if parts[0] == "=title" {
+			parts := strings.SplitN(line[1:], " ", 2)
+			if parts[0] == "title" {
 				p.title = parts[1]
 			}
 			continue
