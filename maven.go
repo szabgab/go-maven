@@ -11,7 +11,8 @@ func main() {
 }
 
 type pageType struct {
-	title string
+	title  string
+	status string
 }
 
 func parseFile(path string) (pageType, error) {
@@ -38,6 +39,9 @@ func parseFile(path string) (pageType, error) {
 			parts := strings.SplitN(line[1:], " ", 2)
 			if parts[0] == "title" {
 				p.title = parts[1]
+			}
+			if parts[0] == "status" {
+				p.status = parts[1]
 			}
 			continue
 		}

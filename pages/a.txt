@@ -1,1 +1,16 @@
 =title Code Maven - for people who code
+=timestamp 2015-01-28T12:00:03
+=status show
+=show_date 0
+=author 0
+=archive 0
+=comments_disqus_enable 0
+=show_related 0
+
+=abstract start
+
+Some free text in the abstract.
+
+=abstract end
+
+Some text in the body of the page.

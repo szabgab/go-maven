@@ -30,4 +30,8 @@ func TestPage(t *testing.T) {
 	if res.title != "Code Maven - for people who code" {
 		t.Errorf("Did not read the title correctly from file '%v'. Received: '%v'", path, res.title)
 	}
+	if res.status != "show" {
+		t.Errorf("Did not read the status correctly from file '%v'. Received: '%v'", path, res.status)
+	}
+
 }
