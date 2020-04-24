@@ -7,6 +7,10 @@ import (
 	"testing"
 )
 
+const (
+	titleA = "Code Maven - for people who code"
+)
+
 func TestPage(t *testing.T) {
 	res, err := parseFile("abc")
 	if err == nil {
@@ -27,7 +31,7 @@ func TestPage(t *testing.T) {
 	if fmt.Sprintf("%T", res) != "main.pageType" {
 		t.Errorf("Invalid type: %v", reflect.TypeOf(res))
 	}
-	if res.title != "Code Maven - for people who code" {
+	if res.title != titleA {
 		t.Errorf("Did not read the title correctly from file '%v'. Received: '%v'", path, res.title)
 	}
 	if res.status != "show" {
@@ -60,4 +64,10 @@ func TestPages(t *testing.T) {
 		t.Errorf("Invalid type: %v", reflect.TypeOf(res))
 	}
 
+	if len(res) != 1 {
+		t.Errorf("Incorrect number of pages: seen: %v expected: %v", len(res), 1)
+	}
+	if res[0].title != titleA {
+		t.Errorf("Did not read the title correctly from file '%v'. Received: '%v'", path, res[0].title)
+	}
 }

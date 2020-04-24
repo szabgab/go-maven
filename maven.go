@@ -2,9 +2,10 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -61,8 +62,14 @@ func collectData(path string) ([]pageType, error) {
 	if err != nil {
 		return pages, err
 	}
-	for file := range files {
-		fmt.Println(file)
+	for _, file := range files {
+		log.Println(file.Name())
+		relPath := filepath.Join(path, file.Name())
+		res, err := parseFile(relPath)
+		if err != nil {
+			return pages, err
+		}
+		pages = append(pages, res)
 	}
 	return pages, nil
 }
