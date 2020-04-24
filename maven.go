@@ -2,6 +2,8 @@ package main
 
 import (
 	"bufio"
+	"fmt"
+	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -51,4 +53,16 @@ func parseFile(path string) (pageType, error) {
 	}
 
 	return p, nil
+}
+
+func collectData(path string) ([]pageType, error) {
+	pages := []pageType{}
+	files, err := ioutil.ReadDir(path)
+	if err != nil {
+		return pages, err
+	}
+	for file := range files {
+		fmt.Println(file)
+	}
+	return pages, nil
 }

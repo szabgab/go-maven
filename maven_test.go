@@ -35,3 +35,29 @@ func TestPage(t *testing.T) {
 	}
 
 }
+
+func TestPagesBadPath(t *testing.T) {
+	path := "abc"
+	res, err := collectData(path)
+	if err == nil {
+		t.Errorf("Expected file not found error. Received no error.")
+	}
+	if !os.IsNotExist(err) {
+		t.Errorf("Expected file not found error. Received %v", err)
+	}
+	if fmt.Sprintf("%T", res) != "[]main.pageType" {
+		t.Errorf("Invalid type: %v", reflect.TypeOf(res))
+	}
+}
+
+func TestPages(t *testing.T) {
+	path := "pages"
+	res, err := collectData(path)
+	if err != nil {
+		t.Errorf("Error received: %v", err)
+	}
+	if fmt.Sprintf("%T", res) != "[]main.pageType" {
+		t.Errorf("Invalid type: %v", reflect.TypeOf(res))
+	}
+
+}
